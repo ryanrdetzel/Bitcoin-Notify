@@ -114,9 +114,9 @@
 			children = (
 				C5CEC4DF18C75CF9003D433F /* AppDelegate.h */,
 				C5CEC4E018C75CF9003D433F /* AppDelegate.m */,
-				C5CEC4E218C75CF9003D433F /* Main.storyboard */,
 				C5CEC4E518C75CF9003D433F /* ViewController.h */,
 				C5CEC4E618C75CF9003D433F /* ViewController.m */,
+				C5CEC4E218C75CF9003D433F /* Main.storyboard */,
 				C5CEC4E818C75CF9003D433F /* Images.xcassets */,
 				C5CEC4D718C75CF9003D433F /* Supporting Files */,
 			);
@@ -199,6 +199,13 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Ryan Detzel";
 				TargetAttributes = {
+					C5CEC4CC18C75CF9003D433F = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
 					C5CEC4ED18C75CF9003D433F = {
 						TestTargetID = C5CEC4CC18C75CF9003D433F;
 					};
@@ -460,6 +467,7 @@
 				C5CEC50118C75CF9003D433F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C5CEC50218C75CF9003D433F /* Build configuration list for PBXNativeTarget "Bitcoin NotifyTests" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +476,7 @@
 				C5CEC50418C75CF9003D433F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
