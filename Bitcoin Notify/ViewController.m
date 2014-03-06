@@ -10,41 +10,47 @@
 
 @interface ViewController ()
 -(void)updateCurrentPriceLabel;
-@property (nonatomic, strong) UILabel *currentPriceLabel;
 @end
+
 
 @implementation ViewController
 
-@synthesize currentPriceLabel;
-
+@synthesize currentPriceLabel, alertPrice;
 
 - (void)viewDidLoad{
     [super viewDidLoad];
     
-    /* Setup a label to display the current price in the app */
-    currentPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height/2,
-                                                                  self.view.frame.size.width, 24)];
-    currentPriceLabel.font = [UIFont systemFontOfSize:24];
-    currentPriceLabel.textAlignment = NSTextAlignmentCenter;
-    currentPriceLabel.text = @"-";
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    currentPriceLabel.text = [defaults stringForKey:@"last_price"];
+    alertPrice.text = [defaults stringForKey:@"alert_price"];
     
-    [self fetchBackgroundDataWithCompletionHandler:nil];
-    [self.view addSubview:currentPriceLabel];
-    
-    
-    //[self updateCurrentPriceLabel];
+    [self updatePriceWithCompletionHandler:nil];
+    [alertPrice becomeFirstResponder];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(updateCurrentPriceLabel)
                                                  name:UIApplicationDidBecomeActiveNotification
                                                object:nil];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(updateCurrentPriceLabel)
                                                  name:UIApplicationBackgroundRefreshStatusDidChangeNotification
                                                object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(textFieldDidChange)
+                                                 name:UITextFieldTextDidChangeNotification
+                                               object:alertPrice];
 }
 
--(void)fetchBackgroundDataWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
+-(void)textFieldDidChange{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setFloat:[alertPrice.text floatValue] forKey:@"alert_price"];
+    [defaults synchronize];
+    NSLog(@"Saved: %@", alertPrice.text);
+}
+
+-(void)updatePriceWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
     NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
     //sessionConfiguration.URLCache = nil;
     NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfiguration];
@@ -55,7 +61,6 @@
                                         completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                             NSNumber *price = [NSNumber numberWithFloat:[[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] floatValue]];
                                             
-                                            NSLog(@"Price: %@", price);
                                             if (error) {
                                                 if (completionHandler){
                                                     completionHandler(UIBackgroundFetchResultFailed);
@@ -63,18 +68,17 @@
                                                 return;
                                             }
                                             
+                                            UILocalNotification *localNotif = [[UILocalNotification alloc] init];
                                             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                                             NSDate *last_notification = (NSDate *)[defaults objectForKey:@"last_notification"];
                                             NSTimeInterval secondsBetween = 1000;
-                                            
+                                            float alert_price = [defaults floatForKey:@"alert_price"];
+
                                             if (last_notification != nil){
                                                 secondsBetween = [[NSDate date] timeIntervalSinceDate:last_notification];
                                             }
                                             
-                                            UILocalNotification *localNotif = [[UILocalNotification alloc] init];
-                                            
-                                            if (secondsBetween > 60 * 5 && [price floatValue] < 670){
-                                                
+                                            if (secondsBetween > 60 * 5 && [price floatValue] < alert_price){
                                                 localNotif.alertBody = [NSString stringWithFormat:@"Price Alert: $%@", price];
                                                 localNotif.alertAction = @"View";
                                                 localNotif.soundName = UILocalNotificationDefaultSoundName;
@@ -85,7 +89,7 @@
                                             localNotif.applicationIconBadgeNumber = [price integerValue];
                                             [[UIApplication sharedApplication]presentLocalNotificationNow:localNotif];
                                             
-                                            [defaults setObject:price forKey:@"current_price"];
+                                            [defaults setObject:price forKey:@"last_price"];
                                             [defaults synchronize];
                                             
                                             //Update the screenshot for background task switching
@@ -99,11 +103,11 @@
 }
 
 -(void)updateCurrentPriceLabel{
-    NSString *current_price = [[NSUserDefaults standardUserDefaults] stringForKey:@"current_price"];
+    NSString *last_price = [[NSUserDefaults standardUserDefaults] stringForKey:@"last_price"];
     NSLog(@"Update current price lavel");
     
-    if (current_price != nil){
-        currentPriceLabel.text = current_price;
+    if (last_price != nil){
+        currentPriceLabel.text = [NSString stringWithFormat:@"$%@", last_price];
     }
 }
 

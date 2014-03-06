@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
--(void)fetchBackgroundDataWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
+@interface ViewController : UIViewController <UITextFieldDelegate>
+@property (nonatomic) IBOutlet UILabel *currentPriceLabel;
+@property (nonatomic) IBOutlet UITextField *alertPrice;
+
+-(void)updatePriceWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
 @end

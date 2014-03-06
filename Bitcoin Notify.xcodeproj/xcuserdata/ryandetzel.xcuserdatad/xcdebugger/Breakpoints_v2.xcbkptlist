@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bitcoin Notify/ViewController.m"
-            timestampString = "415724819.206254"
+            timestampString = "415760090.405038"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "-updateCurrentPriceLabel"
             landmarkType = "5">
          </BreakpointContent>

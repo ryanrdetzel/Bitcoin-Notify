@@ -13,13 +13,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    /* Set some defaults so we're not blank */
+    NSDictionary *defaults = [NSDictionary dictionaryWithObjectsAndKeys:@"450.00", @"alert_price", @"600.00", @"last_price", nil];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
+    
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     return YES;
 }
 
 - (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
     ViewController *viewController = (ViewController *)self.window.rootViewController;
-    [viewController fetchBackgroundDataWithCompletionHandler:completionHandler];
+    [viewController updatePriceWithCompletionHandler:completionHandler];
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application

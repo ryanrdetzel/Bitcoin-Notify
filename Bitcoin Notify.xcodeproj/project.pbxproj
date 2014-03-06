@@ -13,7 +13,6 @@
 		C5CEC4DB18C75CF9003D433F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C5CEC4D918C75CF9003D433F /* InfoPlist.strings */; };
 		C5CEC4DD18C75CF9003D433F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CEC4DC18C75CF9003D433F /* main.m */; };
 		C5CEC4E118C75CF9003D433F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CEC4E018C75CF9003D433F /* AppDelegate.m */; };
-		C5CEC4E418C75CF9003D433F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5CEC4E218C75CF9003D433F /* Main.storyboard */; };
 		C5CEC4E718C75CF9003D433F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CEC4E618C75CF9003D433F /* ViewController.m */; };
 		C5CEC4E918C75CF9003D433F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5CEC4E818C75CF9003D433F /* Images.xcassets */; };
 		C5CEC4F018C75CF9003D433F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5CEC4EF18C75CF9003D433F /* XCTest.framework */; };
@@ -21,6 +20,8 @@
 		C5CEC4F218C75CF9003D433F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5CEC4D418C75CF9003D433F /* UIKit.framework */; };
 		C5CEC4FA18C75CF9003D433F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C5CEC4F818C75CF9003D433F /* InfoPlist.strings */; };
 		C5CEC4FC18C75CF9003D433F /* Bitcoin_NotifyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CEC4FB18C75CF9003D433F /* Bitcoin_NotifyTests.m */; };
+		C5CEC50818C7C57A003D433F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5CEC50718C7C57A003D433F /* Main.storyboard */; };
+		C5CEC50A18C7ECD2003D433F /* bitcoin-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C5CEC50918C7ECD2003D433F /* bitcoin-logo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +45,6 @@
 		C5CEC4DE18C75CF9003D433F /* Bitcoin Notify-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bitcoin Notify-Prefix.pch"; sourceTree = "<group>"; };
 		C5CEC4DF18C75CF9003D433F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C5CEC4E018C75CF9003D433F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C5CEC4E318C75CF9003D433F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C5CEC4E518C75CF9003D433F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		C5CEC4E618C75CF9003D433F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C5CEC4E818C75CF9003D433F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -53,6 +53,8 @@
 		C5CEC4F718C75CF9003D433F /* Bitcoin NotifyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bitcoin NotifyTests-Info.plist"; sourceTree = "<group>"; };
 		C5CEC4F918C75CF9003D433F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C5CEC4FB18C75CF9003D433F /* Bitcoin_NotifyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Bitcoin_NotifyTests.m; sourceTree = "<group>"; };
+		C5CEC50718C7C57A003D433F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		C5CEC50918C7ECD2003D433F /* bitcoin-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bitcoin-logo.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +118,8 @@
 				C5CEC4E018C75CF9003D433F /* AppDelegate.m */,
 				C5CEC4E518C75CF9003D433F /* ViewController.h */,
 				C5CEC4E618C75CF9003D433F /* ViewController.m */,
-				C5CEC4E218C75CF9003D433F /* Main.storyboard */,
+				C5CEC50718C7C57A003D433F /* Main.storyboard */,
+				C5CEC50918C7ECD2003D433F /* bitcoin-logo.png */,
 				C5CEC4E818C75CF9003D433F /* Images.xcassets */,
 				C5CEC4D718C75CF9003D433F /* Supporting Files */,
 			);
@@ -236,8 +239,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5CEC4E918C75CF9003D433F /* Images.xcassets in Resources */,
+				C5CEC50A18C7ECD2003D433F /* bitcoin-logo.png in Resources */,
+				C5CEC50818C7C57A003D433F /* Main.storyboard in Resources */,
 				C5CEC4DB18C75CF9003D433F /* InfoPlist.strings in Resources */,
-				C5CEC4E418C75CF9003D433F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,14 +291,6 @@
 				C5CEC4DA18C75CF9003D433F /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		C5CEC4E218C75CF9003D433F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C5CEC4E318C75CF9003D433F /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		C5CEC4F818C75CF9003D433F /* InfoPlist.strings */ = {
